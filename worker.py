@@ -517,7 +517,12 @@ def run(task_id, task_args):
                 ]
  
                 if use_gpu:
-                    docker_cmd += ['--gpus', 'all']
+                    docker_cmd += [
+                        '--device', '/dev/nvidia0:/dev/nvidia0',
+                        '--device', '/dev/nvidia-uvm:/dev/nvidia-uvm',
+                        '--device', '/dev/nvidiactl:/dev/nvidiactl',
+                    ]
+
 
                 docker_cmd += [
                     docker_image,
@@ -594,7 +599,12 @@ def run(task_id, task_args):
                 ]
  
                 if use_gpu:
-                    ingestion_docker_cmd += ['--gpus', 'all']
+                    ingestion_docker_cmd += [
+                        '--device', '/dev/nvidia0:/dev/nvidia0',
+                        '--device', '/dev/nvidia-uvm:/dev/nvidia-uvm',
+                        '--device', '/dev/nvidiactl:/dev/nvidiactl',
+                    ]
+
 
                 ingestion_docker_cmd += [
                     ingestion_program_docker_image,
