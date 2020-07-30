@@ -518,6 +518,7 @@ def run(task_id, task_args):
  
                 if use_gpu:
                     docker_cmd += [
+                        '--mount', 'type=bind,source=/home/kubernetes/bin/nvidia,target=/usr/local/nvidia',
                         '--device', '/dev/nvidia0:/dev/nvidia0',
                         '--device', '/dev/nvidia-uvm:/dev/nvidia-uvm',
                         '--device', '/dev/nvidiactl:/dev/nvidiactl',
@@ -600,6 +601,7 @@ def run(task_id, task_args):
  
                 if use_gpu:
                     ingestion_docker_cmd += [
+                        '--mount', 'type=bind,source=/home/kubernetes/bin/nvidia,target=/usr/local/nvidia',
                         '--device', '/dev/nvidia0:/dev/nvidia0',
                         '--device', '/dev/nvidia-uvm:/dev/nvidia-uvm',
                         '--device', '/dev/nvidiactl:/dev/nvidiactl',
