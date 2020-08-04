@@ -502,6 +502,8 @@ def run(task_id, task_args):
                     '--stop-timeout={}'.format(execution_time_limit),
                     # Don't allow subprocesses to raise privileges
                     '--security-opt=no-new-privileges',
+                    # Don't allow participants' code to access internet
+                    '--network', 'none',
                     # Set the right volume
                     '-v', '{0}:{0}'.format(run_dir),
                     '-v', '{0}:{0}'.format(shared_dir),
@@ -586,6 +588,8 @@ def run(task_id, task_args):
                     '--stop-timeout={}'.format(execution_time_limit),
                     # Don't allow subprocesses to raise privileges
                     '--security-opt=no-new-privileges',
+                    # Don't allow participants' code to access internet
+                    '--network', 'none',
                     # Set the right volume
                     '-v', '{0}:{0}'.format(run_dir),
                     '-v', '{0}:{0}'.format(shared_dir),
